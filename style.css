@@ -1,3 +1,4 @@
+
 body {
     background-color: #E9C46A;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -74,6 +75,7 @@ display: flex;
 
 .orderSmall {
     display: none;
+    padding: auto;
 }
 
 .orderMedium {
@@ -87,3 +89,14 @@ display: flex;
     display: none;
 }
 
+.plus {
+    border-radius: 70%;
+    border: 0;
+    background-color: aqua;
+}
+.minus{
+    border-radius: 50%;
+    border: 0;
+    color: aqua;
+    background-color: black;
+}

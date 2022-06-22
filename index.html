@@ -9,6 +9,7 @@
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"> defer</script>
+    
     <title>Perfect Pizza</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -38,11 +39,28 @@
                         this.paymentMessage = 'No amount Entered!'
                     }
                     if (this.paymentAmount >= this.cartTotal() && this.paymentAmount >0) {
-                        this.paymentMessage = 'Payment successful, Go get your order!'
+                        this.paymentMessage = 'Payment successful, Go get your order!';
+                        
+
+                        setTimeout (() => {
+                            
+                            this.paymentMessage= 'Next order';
+                            this.paymentAmount= false;
+                            this.payNow = false;
+                            
+                            this.smallTot= 0.00,
+                            this.smallQty= 0.00,
+                            this.mediumTot=0.00,
+                            this.mediumQty= 0.00,
+                            this.titanicTot= 0.00,
+                            this.titanicQty= 0.00
+                            this.buy_btn.click()= !showDiv();
+                        }, 4000) ;
                     }
                     else   {this.paymentMessage = 'Payment failed, you are short a couple of bucks!'
                              }
                 },
+               
              }">
 
     <button @click="show=!show"><i class='fa fa-shopping-cart'></i></button>
@@ -56,8 +74,8 @@
         <span>Small </span> 
         <span>
             
-            <button  @click="smallTot++">+</button>
-            <button @click="smallTot--" x-show="smallTot > 0">-</button>
+            <button class="plus" @click="smallTot++">+</button>
+            <button class="minus" @click="smallTot--" x-show="smallTot > 0">-</button>
         </span>
         <span>R</span> 
         <span x-text="smallTot * 50"> </span>    
@@ -69,8 +87,8 @@
         <span x-text="mediumTot"> </span>         
         <span>Medium</span> 
         <span>
-            <button @click="mediumTot++ ">+</button>
-            <button @click="mediumTot--" x-show="mediumTot > 0">-</button>
+            <button class="plus" @click="mediumTot++ ">+</button>
+            <button class="minus" @click="mediumTot--" x-show="mediumTot > 0">-</button>
         </span>
         <span>R</span> 
         <span x-text="mediumTot * 80"> </span>     
@@ -82,8 +100,8 @@
         <span x-text="titanicTot" > </span>        
         <span>Titanic  </span> 
         <span>
-            <button @click="titanicTot++">+</button>
-            <button @click="titanicTot--" x-show="titanicTot > 0">-</button>
+            <button class="plus" @click="titanicTot++">+</button>
+            <button class="minus" @click="titanicTot--" x-show="titanicTot > 0">-</button>
         </span>
         <span>R</span> 
         <span x-text="titanicTot * 120" > </span>     
