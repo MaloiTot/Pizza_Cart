@@ -1,0 +1,89 @@
+body {
+    background-color: #E9C46A;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h1 {
+    font-size: 300%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-style: italic bold;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+.pizzas{
+    border: 8px solid #E76F51;
+    border-radius: 1.2em;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 0.8em ;
+    width: 20em;
+    display: inline-block;
+    min-height: 20em;
+}
+.small_pizza{
+    background-color: aliceblue;
+    flex : 1;
+}
+
+.medium_pizza{
+    background-color: antiquewhite;
+    flex : 1;
+}
+
+.Titanic_pizza{
+    background-color: aquamarine;
+    flex : 1;
+}
+
+.contact_details{
+    text-align: center;
+    background-color: blanchedalmond;
+    border: 8px solid #E76F51;
+    border-bottom: 1.2em;
+    padding: 1em;
+}
+
+.cart{
+    text-align: center;
+    background-color: blanchedalmond;
+    border: 1px solid #E76F51;
+    
+    padding: 1em;
+}
+
+@media (min-width:760px) {
+
+    body {background-color: #CED4DA;}
+}
+
+@media (min-width:960px) {
+    body {
+        background: #E9FF70;
+    
+}
+.pizza {
+    padding: 2em;
+    font-display: flex;
+}
+
+.container {
+display: flex;
+ }
+}
+
+.orderSmall {
+    display: none;
+}
+
+.orderMedium {
+    display: none;
+}
+
+.orderTitanic {
+    display: none;
+}
+.process{
+    display: none;
+}
+

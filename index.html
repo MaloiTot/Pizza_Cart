@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"> defer</script>
+    <title>Perfect Pizza</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pizza Perfect</h1>
+    
+    <div>
+        <div 
+            x-data="{ 
+                show: false,
+                smallTot: 0.00,
+                smallQty: 0.00,
+                mediumTot: 0.00,
+                mediumQty: 0.00,
+                titanicTot: 0.00,
+                titanicQty: 0.00,
+                paymentMessage: '',
+                paymentAmount: 0,
+
+                cartTotal() {
+                    return this.titanicTot*120 + this.mediumTot*80 + this.smallTot*50;
+                },
+
+                makePayment(){
+                    if (!this.paymentAmount) {
+                        this.paymentMessage = 'No amount Entered!'
+                    }
+                    if (this.paymentAmount >= this.cartTotal() && this.paymentAmount >0) {
+                        this.paymentMessage = 'Payment successful, Go get your order!'
+                    }
+                    else   {this.paymentMessage = 'Payment failed, you are short a couple of bucks!'
+                             }
+                },
+             }">
+
+    <button @click="show=!show"><i class='fa fa-shopping-cart'></i></button>
+    
+    <div x-show.transition="show">
+        <div class="cart"> 
+         <h2>Shopping Cart</h2>
+        <div>
+            <div class="orderSmall" id="smallChk" > 
+        <span x-text="smallTot" > </span> 
+        <span>Small </span> 
+        <span>
+            
+            <button  @click="smallTot++">+</button>
+            <button @click="smallTot--" x-show="smallTot > 0">-</button>
+        </span>
+        <span>R</span> 
+        <span x-text="smallTot * 50"> </span>    
+            </div>
+        </div>
+    
+        <div>
+            <div class="orderMedium" id="mediumChk"> 
+        <span x-text="mediumTot"> </span>         
+        <span>Medium</span> 
+        <span>
+            <button @click="mediumTot++ ">+</button>
+            <button @click="mediumTot--" x-show="mediumTot > 0">-</button>
+        </span>
+        <span>R</span> 
+        <span x-text="mediumTot * 80"> </span>     
+            </div>
+        </div>
+
+        <div>
+            <div class="orderTitanic" id="titanicChk">  
+        <span x-text="titanicTot" > </span>        
+        <span>Titanic  </span> 
+        <span>
+            <button @click="titanicTot++">+</button>
+            <button @click="titanicTot--" x-show="titanicTot > 0">-</button>
+        </span>
+        <span>R</span> 
+        <span x-text="titanicTot * 120" > </span>     
+            </div>
+        </div>
+
+        <div>
+            <div class="payNow">
+        <span>Total Cost= R </span>
+         <span></span><span> </span>
+          <span  x-text="titanicTot*120 + mediumTot*80 + smallTot*50"></span> 
+            </div>
+        </div>
+        <button class="checkout_btn" id="cash" role="click" onclick=" showDiv()=!showDiv()" x-show="titanicTot*120 + mediumTot*80 + smallTot*50 > 0">Checkout <script>$(function() {
+            $("#cash").click(function() {
+                $("#payment").show();
+            });
+        });
+        </script></button>
+        
+     <div class="process" id="payment">
+        <div class="message" x-text="paymentMessage" x-show.transition="paymentMessage">
+            
+        </div>
+            
+          <label for=""> Payment amount:</label>
+          <span><input type="number" placeholder="payment amount" x-model="paymentAmount"></span>
+          <div>
+          <button x-on:click="makePayment" >Pay </button>
+          </div>
+        </div>
+     </div>  
+    </div> 
+</div>
+
+ <div class="container">
+    <div class="pizzas small_pizza">
+        <h2>Small Pizza</h2>
+        <img src="pizza slice.png" width="180">
+      <h3>R50</h3>
+        <div>BBQ, 
+            Chicken, 
+            fruit, 
+            Pork
+        </div>
+        <button class="buy_btn" id="class1" role="button" onclick=" showDiv()"  >Buy<script>$(function() {
+            $("#class1").click(function() {
+                $("#smallChk").show();
+            });
+        });
+        </script>
+            </button>
+    </div>
+    <div class="pizzas medium_pizza">
+        <h2>Medium Pizza</h2>
+        <img src="pizza 1.png" width="210">
+        <h3>R80</h3>
+        <div>
+            Marguritta, 
+            Chicken and Mayo, 
+            Veggie.
+        </div>
+        <button class="buy_btn" id="class2" role="button" onclick = "showDiv()"  >Buy<script> $(function() {
+            $("#class2").click(function() {
+                $("#mediumChk").show();
+            });
+        });
+        </script>
+            </button>
+    </div>
+    <div class="pizzas Titanic_pizza">
+        <h2>Titanic Pizza</h2>
+        <img src="pizza full.png" width="230">
+        <h3>R120</h3>
+        <div>
+            Any flavour.
+        </div>
+        <button class="buy_btn" id="class3" role="button" onclick="showDiv()"  >Buy<script>$(function() {
+            $("#class3").click(function() {
+                $("#titanicChk").show();
+            });
+        });
+        </script>
+            </button>
+    </div>
+ </div>
+
+    <div class="pizza contact_details">
+        <div>
+        <h2>Contact Details</h2>
+        </div>
+        <div>  Tel: 016 856 6321
+        </div>
+        <div>
+            email: pizzaperfect@home.com
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
